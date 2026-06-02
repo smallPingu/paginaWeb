@@ -22,89 +22,85 @@ No test, lint, or typecheck scripts configured.
 /uk/        → Ukrainian
 ```
 
-Every page exists as a duplicate file per locale (thin wrapper importing a shared content component). Page files at:
-- `src/pages/index.astro` + `src/pages/en/index.astro` + `src/pages/uk/index.astro`
-- Same pattern for `galeria/`, `blog/`, `contacto.astro`
-
-**Important**: Dynamic blog routes (`[...slug].astro`) exist at all three locale levels and each exports `getStaticPaths` filtering by `frontmatter.locale`.
+Every page file exists per locale (thin Astro wrapper importing a shared content component from `src/components/`). Blog uses dynamic `[...slug].astro` — each locale copy has `getStaticPaths` filtering by `frontmatter.locale`.
 
 ### i18n
 
-Translation files in `src/i18n/{es,en,uk}.json`. Use dotted-path access:
+Translation files in `src/i18n/{es,en,uk}.json`. Dotted-path access via `useTranslations(locale)`:
+
 ```astro
----
-import { useTranslations } from '../i18n/utils';
 const { t } = useTranslations(Astro.currentLocale || 'es');
----
-<p>{t('hero.title')}</p>
 ```
 
-Locale prefix for internal links:
+`Astro.currentLocale` is how the active locale is obtained in templates. Locale prefix for links:
+
 ```astro
 const localePrefix = locale === 'es' ? '' : `/${locale}`;
 ```
 
-### Content (blog)
+### Content collections (astro:content)
 
-Blog posts are `.md` files in `src/content/blog/` with frontmatter (`locale`, `title`, `description`, `date`, `draft`). Loaded via `import.meta.glob` — **not** `Astro.glob` (deprecated in Astro 5):
+Defined in `src/content/config.ts` — two collections:
 
-```astro
-const rawModules = import.meta.glob('../content/blog/*.md', { eager: true });
-const posts = Object.entries(rawModules).map(([fp, mod]) => ({
-  slug: fp.split('/').pop()?.replace(/\.md$/, ''),
-  ...mod.frontmatter,
-})).filter(p => p.locale === locale && !p.draft);
-```
+- **`blog`**: `.md` files in `src/content/blog/` with frontmatter (`locale`, `title`, `description`, `date`, `draft`, `author`, `image`). Loaded via `import.meta.glob` (NOT `Astro.glob` — deprecated in Astro 5). Slug extracted from filepath, `.url` not available on glob results.
+- **`obras`**: Collection defined in config (`src/content/obras/`) with fields (`title`, `description`, `date`, `technique`, `image`, `category`). **No files exist yet** — the gallery currently renders hardcoded SVG placeholders, not from content.
 
-`getStaticPaths` in `[...slug].astro` pages uses the same pattern, extracting slug from file path (no `.url` property on `import.meta.glob` results).
+Key: `import.meta.glob('../content/blog/*.md', { eager: true })` — NOT `Astro.glob`. Post body rendered via `<post.Content />`.
 
 ### GSAP Animations
 
-Centralized in `src/scripts/animations.js`. Import in `<script>` tags in `.astro` components:
+All in `src/scripts/animations.js` (uses ScrollTrigger). Import in `<script>` tags:
 
 ```astro
 <script>
-  import { animateHero, animateFloatingShapes, cleanup } from '../scripts/animations.js';
-  document.addEventListener('DOMContentLoaded', () => { animateHero(container); });
+  import { animateHero, animateReveal, cleanup } from '../scripts/animations.js';
+  document.addEventListener('DOMContentLoaded', () => animateHero(container));
   document.addEventListener('astro:before-swap', cleanup);
 </script>
 ```
 
-Available functions: `animateHero`, `animateFloatingShapes`, `animateGalleryGrid`, `animateReveal`, `animateParallax`, `animateCounter`, `animateSectionDivider`, `cleanup`.
+Available: `animateHero`, `animateFloatingShapes`, `animateGalleryGrid`, `animateReveal`, `animateParallax`, `animateCounter`, `animateSectionDivider`, `cleanup`.
 
-Gallery lightbox at `src/scripts/gallery-lightbox.js` — vanilla JS, keyboard-accessible, zero deps. Initialized via `initLightbox('#gallery-grid')`.
+Gallery lightbox at `src/scripts/gallery-lightbox.js` — vanilla JS, zero deps. Init via `initLightbox('#gallery-grid')`.
 
-### CMS
+### Tailwind Custom Palette
 
-Decap CMS at `/admin/`. After Netlify deploy, client accesses `/admin/`, authenticates via GitHub, edits blog posts and gallery works. Config at `public/admin/config.yml`. **Requires**: real GitHub repo, Netlify identity setup.
-
-## Design Tokens (Tailwind)
-
-Custom palette — use instead of stock Tailwind colors:
-- `brand-{50..950}` — orange/ochre brand
-- `paper-{light,DEFAULT,dark}` — warm beige backgrounds
-- `ink-{light,DEFAULT,dark}` — dark text tones
+Use instead of stock:
+- `brand-{50..950}` — orange/ochre
+- `paper-{light,DEFAULT,dark}` — warm beige
+- `ink-{light,DEFAULT,dark}` — dark text
 - `font-display` — Playfair Display (headings)
 - `font-body` — Inter (body)
 
+Google Fonts loaded from CDN in `src/layouts/Layout.astro` (no local font files).
+
+## Constraints
+
+### Netlify Dependencies (current)
+
+The site has two hard Netlify dependencies:
+1. **Contact form** (`src/components/ContactoContent.astro`): uses `netlify` attribute + fetch POST to `/`. Only processes submissions when deployed on Netlify.
+2. **Decap CMS** (`public/admin/config.yml`): uses `base_url: https://api.netlify.com` with Netlify Identity for auth.
+
+These will need alternatives for the Raspberry Pi deploy plan in `docs/deploy-rpi.md`.
+
+### Decap CMS
+
+At `/admin/` after Netlify deploy. Client authenticates via GitHub, manages blog posts and gallery works. Collection config mirrors `src/content/config.ts`. Requires real GitHub repo in config.yml.
+
 ## Placeholders to Replace Before Launch
 
-- `public/admin/config.yml`: `repo: usuario/repo-clases-dibujo` → real GitHub repo
-- `astro.config.mjs`: `site: 'https://tusitio.com'` → real domain
-- `src/components/ContactoContent.astro`: `wa.me/123456789` → real WhatsApp number
-- `src/i18n/*.json`: email `hola@clasesdibujo.com` → real contact email
-- Gallery: SVG placeholders in `LandingContent.astro` and `GaleriaContent.astro` → real artwork images
-
-## Building
-
-`npm run build` produces static HTML in `dist/`. Expected output: 14 pages (es/en/uk × landing, gallery, blog, blog-list, contact, plus 2 Spanish blog posts).
-
-`dist/admin/` copies from `public/admin/` as-is (no build transform).
+- `public/admin/config.yml` → `repo: usuario/repo-clases-dibujo`
+- `astro.config.mjs` → `site: 'https://tusitio.com'`
+- `src/components/ContactoContent.astro` → WhatsApp number (`wa.me/123456789`)
+- `src/i18n/*.json` → email (`hola@clasesdibujo.com`)
+- Gallery SVGs in `LandingContent.astro` / `GaleriaContent.astro` → real artwork images
 
 ## Known Quirks
 
-- `import.meta.glob` with `{ eager: true }` is the supported glob API. `Astro.glob` emits deprecation warnings and may be removed.
-- `render` from `astro:content` is unused — post content rendered via `<post.Content />` from `import.meta.glob` modules.
-- Blog posts filter by `locale` field in frontmatter. Adding a post for English requires a separate file with `locale: "en"`.
-- No `.gitignore` exists. `dist/`, `node_modules/`, `.astro/` should be ignored before initial commit.
-- `@types/gsap` is deprecated (GSAP ships its own types), kept only as no-op dependency.
+- `import.meta.glob` with `{ eager: true }` is the supported glob API. `Astro.glob` is deprecated in Astro 5.
+- `render` from `astro:content` unused — content rendered via `<post.Content />` from glob modules.
+- Adding a blog post for English: create `.md` file with `locale: "en"` and `locale: "uk"` for Ukrainian. `getStaticPaths` in each locale's `[...slug].astro` filters by its locale.
+- `src/content/obras/` collection is configured but has zero files. Gallery UI is hardcoded SVG placeholders — not yet wired to content collection.
+- No `.gitignore` existed initially. Now created — ignores `node_modules/`, `dist/`, `.astro/`, `.env`, `*.local`, `.DS_Store`.
+- `@types/gsap` is a no-op (GSAP v3 ships its own types), kept as devDependency only.
