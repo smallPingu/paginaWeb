@@ -1,0 +1,61 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const locale = Astro.currentLocale || 'es';
+const { t } = useTranslations(locale);
+---
+
+<section class="py-24 px-4 min-h-screen">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-brand-600 text-sm font-medium uppercase tracking-widest">
+        {t('galeria.title')}
+      </span>
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-ink-dark mt-3">
+        {t('galeria.subtitle')}
+      </h1>
+    </div>
+
+    <!-- Gallery grid (works with lightbox) -->
+    <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((i) => (
+        <div
+          data-gallery-item
+          class:list={[
+            'relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-brand-100 to-brand-200 border border-brand-200/50 group',
+            i <= 2 && 'md:aspect-[4/3]',
+            i === 3 && 'md:row-span-2',
+          ]}
+          data-full=""
+        >
+          <div class="absolute inset-0 flex items-center justify-center text-brand-300/80 group-hover:scale-105 transition-transform duration-500">
+            <svg viewBox="0 0 100 100" class="w-20 h-20 md:w-24 md:h-24">
+              <circle cx="50" cy="45" r="15" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M20 75 L40 55 L55 70 L70 50 L85 75" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+          <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <span class="text-white text-sm font-medium block">Obra #{i}</span>
+            <span class="text-white/60 text-xs">Técnica mixta · 2024</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateGalleryGrid, cleanup } from '../scripts/animations.js';
+  import { initLightbox } from '../scripts/gallery-lightbox.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const gallery = document.getElementById('gallery-grid');
+    if (gallery) {
+      animateGalleryGrid(gallery, { stagger: 0.06 });
+    }
+    initLightbox('#gallery-grid');
+  });
+
+  document.addEventListener('astro:before-swap', cleanup);
+</script>

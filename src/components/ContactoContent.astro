@@ -1,0 +1,178 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const locale = Astro.currentLocale || 'es';
+const { t } = useTranslations(locale);
+---
+
+<section class="py-24 px-4 min-h-screen">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-brand-600 text-sm font-medium uppercase tracking-widest">
+        {t('contacto.title')}
+      </span>
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-ink-dark mt-3">
+        {t('contacto.subtitle')}
+      </h1>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div>
+        <form
+          id="contact-form"
+          class="space-y-6"
+          netlify
+          name="contact"
+          method="POST"
+          data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="lang" value={locale} />
+
+          <div>
+            <label for="name" class="block text-sm font-medium text-ink mb-2">
+              {t('contacto.form.nombre')}
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 rounded-lg border border-brand-200 bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all duration-200"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-ink mb-2">
+              {t('contacto.form.email')}
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 rounded-lg border border-brand-200 bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all duration-200"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-ink mb-2">
+              {t('contacto.form.mensaje')}
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              required
+              class="w-full px-4 py-3 rounded-lg border border-brand-200 bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all duration-200 resize-y"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full px-6 py-3 bg-brand-600 text-white font-medium rounded-lg hover:bg-brand-700 transition-all duration-300 shadow-lg shadow-brand-600/25 hover:shadow-brand-600/40"
+          >
+            {t('contacto.form.enviar')}
+          </button>
+
+          <div id="form-success" class="hidden text-center p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
+            {t('contacto.form.exito')}
+          </div>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div class="bg-paper rounded-2xl p-8 border border-brand-100/50">
+          <h3 class="font-display text-lg font-semibold text-ink-dark mb-6">
+            {t('contacto.title')}
+          </h3>
+
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-ink-dark">{t('contacto.info.email')}</p>
+                <a href="mailto:hola@clasesdibujo.com" class="text-sm text-brand-600 hover:text-brand-700 transition-colors">
+                  hola@clasesdibujo.com
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-ink-dark">{t('contacto.info.whatsapp')}</p>
+                <a href="https://wa.me/123456789" target="_blank" rel="noopener noreferrer" class="text-sm text-brand-600 hover:text-brand-700 transition-colors">
+                  +1 (234) 567-89
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-ink-dark">{t('contacto.info.horarios')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Form handler -->
+<script>
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString(),
+        });
+
+        if (response.ok) {
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+        } else {
+          alert('Error al enviar. Intentalo de nuevo.');
+        }
+      } catch {
+        alert('Error de conexión. Verificá tu internet.');
+      }
+    });
+  }
+</script>
+
+<script>
+  import { animateReveal, cleanup } from '../scripts/animations.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const info = document.querySelectorAll('.bg-paper, form');
+    animateReveal(info, { stagger: 0.15 });
+  });
+
+  document.addEventListener('astro:before-swap', cleanup);
+</script>

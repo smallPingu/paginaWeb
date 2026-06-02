@@ -1,0 +1,67 @@
+{
+  "site": {
+    "title": "Online Drawing Classes",
+    "description": "Private drawing and fine arts classes for kids and teens. Online, live, with personalized attention."
+  },
+  "nav": {
+    "inicio": "Home",
+    "galeria": "Gallery",
+    "blog": "Blog",
+    "contacto": "Contact",
+    "clases": "Classes"
+  },
+  "hero": {
+    "title": "Draw your world,\nwith someone who knows how to guide you",
+    "subtitle": "Online drawing and fine arts classes for elementary and middle school kids. Personalized learning in Spanish, English or Ukrainian.",
+    "cta": "Start today",
+    "cta_secondary": "View gallery"
+  },
+  "servicios": {
+    "title": "Class formats",
+    "subtitle": "Every student is unique. That's why I offer two paths.",
+    "individual": {
+      "title": "One-on-One Classes",
+      "desc": "Full attention, at the student's own pace. From drawing foundations to advanced techniques. Ideal for beginners or those who want steady guidance."
+    },
+    "mentoria": {
+      "title": "Mentorship",
+      "desc": "For students who already know the basics and want to specialize: digital illustration, comics, concept art, digital painting. A custom plan with clear goals."
+    },
+    "idiomas": {
+      "title": "In your language",
+      "desc": "Classes are taught in Spanish, English or Ukrainian. Students learn art while practicing a second language."
+    }
+  },
+  "galeria": {
+    "title": "Gallery",
+    "subtitle": "Student work and personal pieces that show what's possible.",
+    "ver_mas": "View full gallery",
+    "placeholder": "More pieces coming soon"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Tips, techniques, and insights about drawing and teaching.",
+    "leer_mas": "Keep reading",
+    "sin_articulos": "No articles yet. We'll share content soon!"
+  },
+  "contacto": {
+    "title": "Contact",
+    "subtitle": "Book your first class or ask me anything.",
+    "form": {
+      "nombre": "Name",
+      "email": "Email",
+      "mensaje": "Message",
+      "enviar": "Send message",
+      "exito": "Message sent! I'll get back to you shortly."
+    },
+    "info": {
+      "email": "hola@clasesdibujo.com",
+      "whatsapp": "WhatsApp",
+      "horarios": "Mon to Fri — 9:00 AM to 8:00 PM (GMT-3)"
+    }
+  },
+  "footer": {
+    "derechos": "All rights reserved.",
+    "idiomas_disponibles": "Languages: Español, English, Українська"
+  }
+}

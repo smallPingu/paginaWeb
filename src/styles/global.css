@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll base */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better image rendering for artworks */
+img {
+  @apply transition-opacity duration-300;
+}
+
+img[loading="lazy"] {
+  @apply opacity-0;
+}
+
+img[loading="lazy"].loaded {
+  @apply opacity-100;
+}
+
+/* Scroll-triggered reveal base */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Parallax image wrapper */
+.parallax-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-wrapper img {
+  will-change: transform;
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f0e8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d48826;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b86a1e;
+}

@@ -1,0 +1,59 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const locale = Astro.currentLocale || 'es';
+const { t } = useTranslations(locale);
+const slug = Astro.params.slug;
+
+// Load all posts via import.meta.glob
+const rawModules = import.meta.glob('../content/blog/*.md', { eager: true });
+const entry = Object.entries(rawModules).find(([filepath, mod]: [string, any]) => {
+  const fileSlug = filepath.split('/').pop()?.replace(/\.md$/, '');
+  return fileSlug === slug && mod.frontmatter?.locale === locale && !mod.frontmatter?.draft;
+});
+
+const post = entry ? { Content: entry[1].Content, frontmatter: entry[1].frontmatter } : null;
+---
+
+<section class="py-24 px-4 min-h-screen">
+  <div class="max-w-3xl mx-auto">
+    {!post ? (
+      <div class="text-center py-20">
+        <h1 class="font-display text-3xl font-bold text-ink-dark mb-4">Artículo no encontrado</h1>
+        <p class="text-ink-light">El artículo que buscás no existe o fue eliminado.</p>
+        <a href={locale === 'es' ? '/blog' : `/${locale}/blog`} class="inline-block mt-6 text-brand-600 hover:text-brand-700 font-medium">
+          ← Volver al blog
+        </a>
+      </div>
+    ) : (
+      <>
+        <a href={locale === 'es' ? '/blog' : `/${locale}/blog`} class="inline-flex items-center text-brand-600 hover:text-brand-700 text-sm font-medium mb-8 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          {t('blog.title')}
+        </a>
+
+        <article>
+          <header class="mb-10">
+            <time class="text-sm text-brand-600 font-medium">
+              {new Intl.DateTimeFormat(locale === 'uk' ? 'uk-UA' : locale === 'en' ? 'en-US' : 'es-AR', {
+                year: 'numeric', month: 'long', day: 'numeric',
+              }).format(new Date(post.frontmatter.date))}
+            </time>
+            <h1 class="font-display text-3xl sm:text-4xl font-bold text-ink-dark mt-2 mb-4 leading-tight">
+              {post.frontmatter.title}
+            </h1>
+            {post.frontmatter.author && (
+              <p class="text-sm text-ink-light">Por {post.frontmatter.author}</p>
+            )}
+          </header>
+
+          <div class="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-ink-dark prose-p:text-ink-light prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg prose-strong:text-ink-dark prose-code:text-brand-700">
+            <post.Content />
+          </div>
+        </article>
+      </>
+    )}
+  </div>
+</section>

@@ -1,0 +1,67 @@
+{
+  "site": {
+    "title": "Clases de Dibujo Online",
+    "description": "Clases particulares de dibujo y bellas artes para niños y adolescentes. Online, en vivo, con atención personalizada."
+  },
+  "nav": {
+    "inicio": "Inicio",
+    "galeria": "Galería",
+    "blog": "Blog",
+    "contacto": "Contacto",
+    "clases": "Clases"
+  },
+  "hero": {
+    "title": "Dibujá tu mundo,\ncon quien sabe cómo guiarte",
+    "subtitle": "Clases online de dibujo y bellas artes para chicos de primaria y secundaria. Aprendizaje personalizado en español, inglés o ucraniano.",
+    "cta": "Empezá hoy",
+    "cta_secondary": "Ver galería"
+  },
+  "servicios": {
+    "title": "Modalidades de clase",
+    "subtitle": "Cada estudiante es único. Por eso ofrezco dos caminos.",
+    "individual": {
+      "title": "Clases Individuales",
+      "desc": "Atención uno a uno. El alumno avanza a su ritmo, desde los fundamentos del dibujo hasta técnicas avanzadas. Ideal para quienes empiezan o quieren mejorar con guía constante."
+    },
+    "mentoria": {
+      "title": "Mentoría",
+      "desc": "Para alumnos que ya dominan lo básico y quieren especializarse en un área: ilustración digital, cómic, concept art, pintura digital. Un plan a medida con objetivos claros."
+    },
+    "idiomas": {
+      "title": "En tu idioma",
+      "desc": "Las clases se dictan en español, inglés o ucraniano. El alumno aprende arte mientras practica un segundo idioma."
+    }
+  },
+  "galeria": {
+    "title": "Galería",
+    "subtitle": "Trabajos de alumnos y obras propias que muestran lo que se puede lograr.",
+    "ver_mas": "Ver galería completa",
+    "placeholder": "Próximamente más obras"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Consejos, técnicas y reflexiones sobre el mundo del dibujo y la enseñanza.",
+    "leer_mas": "Seguir leyendo",
+    "sin_articulos": "Todavía no hay artículos. ¡Pronto compartiremos contenido!"
+  },
+  "contacto": {
+    "title": "Contacto",
+    "subtitle": "Reservá tu primera clase o consultame lo que necesites.",
+    "form": {
+      "nombre": "Nombre",
+      "email": "Email",
+      "mensaje": "Mensaje",
+      "enviar": "Enviar mensaje",
+      "exito": "¡Mensaje enviado! Te responderé a la brevedad."
+    },
+    "info": {
+      "email": "hola@clasesdibujo.com",
+      "whatsapp": "WhatsApp",
+      "horarios": "Lun a Vie — 9:00 a 20:00 (GMT-3)"
+    }
+  },
+  "footer": {
+    "derechos": "Todos los derechos reservados.",
+    "idiomas_disponibles": "Idiomas: Español, English, Українська"
+  }
+}

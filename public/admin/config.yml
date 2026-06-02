@@ -1,0 +1,128 @@
+# Decap CMS Configuration
+# El cliente accede a /admin/ para gestionar contenido
+
+backend:
+  name: github
+  repo: usuario/repo-clases-dibujo    # Cambiar al repo real
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+# Habilitar para subir imágenes desde el CMS
+media_folder: public/obras
+public_folder: /obras
+
+# Logo personalizado en el CMS
+logo_url: /favicon.svg
+
+locale: 'es'
+
+collections:
+  - name: blog
+    label: 'Blog'
+    label_singular: 'Artículo'
+    folder: src/content/blog
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: '{{slug}}'
+    preview_path: blog/{{slug}}
+    sort: 'date:desc'
+
+    # Los artículos se filtran por locale en el frontend
+    # El CMS puede editarlos todos aquí
+
+    fields:
+      - label: 'Idioma'
+        name: 'locale'
+        widget: 'select'
+        options:
+          - { label: 'Español', value: 'es' }
+          - { label: 'English', value: 'en' }
+          - { label: 'Українська', value: 'uk' }
+        default: 'es'
+
+      - label: 'Título'
+        name: 'title'
+        widget: 'string'
+        required: true
+
+      - label: 'Descripción'
+        name: 'description'
+        widget: 'text'
+        hint: 'Breve resumen para la lista de artículos'
+        required: true
+
+      - label: 'Fecha'
+        name: 'date'
+        widget: 'datetime'
+        required: true
+
+      - label: 'Autor'
+        name: 'author'
+        widget: 'string'
+        default: 'Profesor'
+
+      - label: 'Imagen destacada'
+        name: 'image'
+        widget: 'image'
+        required: false
+
+      - label: 'Borrador'
+        name: 'draft'
+        widget: 'boolean'
+        default: false
+        hint: 'Si está activo, el artículo no se publica'
+
+      - label: 'Contenido'
+        name: 'body'
+        widget: 'markdown'
+        required: true
+        hint: 'Escribí el artículo acá. Podés usar Markdown y subir imágenes.'
+
+  - name: obras
+    label: 'Galería'
+    label_singular: 'Obra'
+    folder: src/content/obras
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    slug: '{{slug}}'
+    sort: 'date:desc'
+
+    fields:
+      - label: 'Título'
+        name: 'title'
+        widget: 'string'
+        required: true
+
+      - label: 'Descripción'
+        name: 'description'
+        widget: 'text'
+        required: false
+
+      - label: 'Fecha'
+        name: 'date'
+        widget: 'datetime'
+
+      - label: 'Técnica'
+        name: 'technique'
+        widget: 'string'
+        hint: 'Ej: Digital, Acuarela, Lápiz, Mixta'
+        required: false
+
+      - label: 'Imagen'
+        name: 'image'
+        widget: 'image'
+        required: true
+        hint: 'Subí la obra en formato JPG o PNG'
+
+      - label: 'Categoría'
+        name: 'category'
+        widget: 'select'
+        options:
+          - { label: 'Alumno', value: 'alumno' }
+          - { label: 'Profesor', value: 'profesor' }
+        default: 'alumno'
