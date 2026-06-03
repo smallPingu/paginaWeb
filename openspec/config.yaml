@@ -1,0 +1,22 @@
+project:
+  name: clases-dibujo-online
+  stack: Astro 5, TypeScript, Tailwind CSS, GSAP
+  strict_tdd: false
+
+persistence:
+  mode: openspec
+
+testing:
+  runner: null
+  tdd_enforced: false
+  capabilities:
+    - unit_tests: false
+    - integration_tests: false
+    - e2e_tests: false
+    - linting: false
+    - typechecking: false
+
+settings:
+  pace: interactive
+  review_threshold: 400
+  prs_on_budget: true
