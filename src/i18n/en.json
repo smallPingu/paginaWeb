@@ -44,6 +44,41 @@
     "leer_mas": "Keep reading",
     "sin_articulos": "No articles yet. We'll share content soon!"
   },
+  "clases": {
+    "title": "Available Classes",
+    "subtitle": "Choose the format that best suits your level and goals.",
+    "individual": {
+      "title": "One-on-One Classes",
+      "desc": "Personalized one-on-one attention. Progress at your own pace, from foundations to advanced techniques. Ideal for beginners or those seeking steady guidance.",
+      "duracion": "Duration: 60 minutes",
+      "frecuencia": "Recommended frequency: 1 to 2 times per week",
+      "nivel": "All levels: beginner to advanced"
+    },
+    "colectivas": {
+      "title": "Group Classes",
+      "desc": "Small groups of 3 to 5 students. Collaborative learning where students share ideas, motivate each other, and develop creativity in a social environment.",
+      "duracion": "Duration: 75 minutes",
+      "frecuencia": "Recommended frequency: weekly",
+      "nivel": "Level: beginner to intermediate"
+    },
+    "mentoria": {
+      "title": "Mentorship",
+      "desc": "For students who know the basics and want to specialize: digital illustration, comics, concept art, digital painting. A custom plan with clear goals.",
+      "duracion": "Duration: 90 minutes",
+      "frecuencia": "Recommended frequency: weekly",
+      "nivel": "Level: intermediate to advanced"
+    },
+    "beneficios": {
+      "title": "Why online classes?",
+      "item_1": "Flexible schedule — choose the time that works best for you",
+      "item_2": "No commuting — learn from the comfort of your home",
+      "item_3": "Digital material included — personalized guides and exercises",
+      "item_4": "In your language — classes in Spanish, English or Ukrainian",
+      "item_5": "Continuous feedback — detailed follow-up in every class"
+    },
+    "cta": "Book your first class",
+    "cta_desc": "The first class is a trial with no commitment. Explore the methodology and start drawing."
+  },
   "contacto": {
     "title": "Contact",
     "subtitle": "Book your first class or ask me anything.",

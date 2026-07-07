@@ -1,0 +1,107 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const locale = Astro.currentLocale || 'es';
+const { t } = useTranslations(locale);
+const localePrefix = locale === 'es' ? '' : `/${locale}`;
+
+const benefitKeys = ['item_1', 'item_2', 'item_3', 'item_4', 'item_5'] as const;
+---
+
+<section class="py-24 px-4 min-h-screen">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-brand-600 text-sm font-medium uppercase tracking-widest">{t('servicios.title')}</span>
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-ink-dark mt-3">{t('clases.title')}</h1>
+      <p class="text-lg text-ink-light mt-4 max-w-2xl mx-auto">{t('clases.subtitle')}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+      <article class="group relative bg-white rounded-2xl p-8 border border-complementary-100/50 hover:border-complementary-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+        <div class="w-14 h-14 rounded-xl bg-complementary-100 flex items-center justify-center mb-6 text-complementary-700 text-2xl">✏️</div>
+        <h2 class="font-display text-2xl font-semibold text-ink-dark mb-3">{t('clases.individual.title')}</h2>
+        <p class="text-ink-light leading-relaxed mb-6">{t('clases.individual.desc')}</p>
+        <ul class="space-y-3 text-sm text-ink-light">
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.individual.duracion')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.individual.frecuencia')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.individual.nivel')}</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="group relative bg-white rounded-2xl p-8 border border-complementary-100/50 hover:border-complementary-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+        <div class="w-14 h-14 rounded-xl bg-complementary-100 flex items-center justify-center mb-6 text-complementary-700 text-2xl">👥</div>
+        <h2 class="font-display text-2xl font-semibold text-ink-dark mb-3">{t('clases.colectivas.title')}</h2>
+        <p class="text-ink-light leading-relaxed mb-6">{t('clases.colectivas.desc')}</p>
+        <ul class="space-y-3 text-sm text-ink-light">
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.colectivas.duracion')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.colectivas.frecuencia')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.colectivas.nivel')}</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="group relative bg-white rounded-2xl p-8 border border-complementary-100/50 hover:border-complementary-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+        <div class="w-14 h-14 rounded-xl bg-complementary-100 flex items-center justify-center mb-6 text-complementary-700 text-2xl">🎯</div>
+        <h2 class="font-display text-2xl font-semibold text-ink-dark mb-3">{t('clases.mentoria.title')}</h2>
+        <p class="text-ink-light leading-relaxed mb-6">{t('clases.mentoria.desc')}</p>
+        <ul class="space-y-3 text-sm text-ink-light">
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.mentoria.duracion')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.mentoria.frecuencia')}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-600 mt-0.5">▸</span>
+            <span>{t('clases.mentoria.nivel')}</span>
+          </li>
+        </ul>
+      </article>
+    </div>
+
+    <section class="bg-complementary-50 rounded-3xl p-10 md:p-16 mb-24">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-ink-dark text-center mb-10">{t('clases.beneficios.title')}</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {benefitKeys.map((key, i) => (
+          <div class="flex items-start gap-3 bg-white rounded-xl p-5 shadow-sm border border-complementary-100/50">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-600 text-white text-sm font-bold flex items-center justify-center">{i + 1}</span>
+            <p class="text-ink-light text-sm leading-relaxed">{t(`clases.beneficios.${key}`)}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="text-center bg-ink-dark rounded-3xl p-10 md:p-16">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-4">{t('clases.cta')}</h2>
+      <p class="text-paper/70 max-w-xl mx-auto mb-8">{t('clases.cta_desc')}</p>
+      <a
+        href={localePrefix === '' ? '/contacto' : `${localePrefix}/contacto`}
+        class="inline-flex items-center px-8 py-4 bg-brand-600 text-white font-medium rounded-xl hover:bg-brand-700 transition-all duration-300 shadow-lg shadow-brand-600/25 hover:shadow-brand-600/40 hover:-translate-y-0.5"
+      >
+        {t('contacto.form.enviar')}
+        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </section>
+  </div>
+</section>

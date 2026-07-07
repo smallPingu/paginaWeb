@@ -22,14 +22,14 @@ type CookieStore = {
 };
 
 export const SUPABASE_URL = import.meta.env.SUPABASE_URL;
-export const SUPABASE_ANON_KEY = import.meta.env.SUPABASE_ANON_KEY;
-export const hasSupabaseEnv = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
+export const SUPABASE_PUBLISHABLE_KEY = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
+export const hasSupabaseEnv = Boolean(SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY);
 
 const isProduction = import.meta.env.PROD;
 
 function assertSupabaseEnv() {
   if (!hasSupabaseEnv) {
-    throw new Error('Missing SUPABASE_URL or SUPABASE_ANON_KEY environment variables.');
+    throw new Error('Missing SUPABASE_URL or SUPABASE_PUBLISHABLE_KEY environment variables.');
   }
 }
 
@@ -66,7 +66,7 @@ function createCookieStore(cookies: AstroCookies): CookieStore {
 export function createSupabaseServerClient(cookies: AstroCookies) {
   assertSupabaseEnv();
 
-  return createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  return createServerClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     cookies: createCookieStore(cookies),
   });
 }
@@ -74,5 +74,5 @@ export function createSupabaseServerClient(cookies: AstroCookies) {
 export function createSupabaseBrowserClient() {
   assertSupabaseEnv();
 
-  return createBrowserClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  return createBrowserClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 }

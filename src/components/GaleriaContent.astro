@@ -22,13 +22,13 @@ const { t } = useTranslations(locale);
         <div
           data-gallery-item
           class:list={[
-            'relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-brand-100 to-brand-200 border border-brand-200/50 group',
+            'relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-complementary-100 to-complementary-200 border border-complementary-200/50 group',
             i <= 2 && 'md:aspect-[4/3]',
             i === 3 && 'md:row-span-2',
           ]}
           data-full=""
         >
-          <div class="absolute inset-0 flex items-center justify-center text-brand-300/80 group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 flex items-center justify-center text-complementary-300/80 group-hover:scale-105 transition-transform duration-500">
             <svg viewBox="0 0 100 100" class="w-20 h-20 md:w-24 md:h-24">
               <circle cx="50" cy="45" r="15" fill="none" stroke="currentColor" stroke-width="1.5" />
               <path d="M20 75 L40 55 L55 70 L70 50 L85 75" fill="none" stroke="currentColor" stroke-width="1.5" />

@@ -44,6 +44,41 @@
     "leer_mas": "Seguir leyendo",
     "sin_articulos": "Todavía no hay artículos. ¡Pronto compartiremos contenido!"
   },
+  "clases": {
+    "title": "Clases Disponibles",
+    "subtitle": "Elegí la modalidad que mejor se adapte a tu nivel y objetivos.",
+    "individual": {
+      "title": "Clases Individuales",
+      "desc": "Atención personalizada uno a uno. El alumno avanza a su ritmo, desde fundamentos hasta técnicas avanzadas. Ideal para quienes empiezan o quieren mejorar con guía constante.",
+      "duracion": "Duración: 60 minutos",
+      "frecuencia": "Frecuencia recomendada: 1 a 2 veces por semana",
+      "nivel": "Todos los niveles: desde principiante hasta avanzado"
+    },
+    "colectivas": {
+      "title": "Clases Colectivas",
+      "desc": "Grupos reducidos de 3 a 5 alumnos. Aprendizaje colaborativo donde los estudiantes comparten ideas, se motivan mutuamente y desarrollan su creatividad en un entorno social.",
+      "duracion": "Duración: 75 minutos",
+      "frecuencia": "Frecuencia recomendada: semanal",
+      "nivel": "Nivel: principiante a intermedio"
+    },
+    "mentoria": {
+      "title": "Mentoría",
+      "desc": "Para alumnos que ya dominan lo básico y quieren especializarse: ilustración digital, cómic, concept art, pintura digital. Plan a medida con objetivos claros.",
+      "duracion": "Duración: 90 minutos",
+      "frecuencia": "Frecuencia recomendada: semanal",
+      "nivel": "Nivel: intermedio a avanzado"
+    },
+    "beneficios": {
+      "title": "¿Por qué clases online?",
+      "item_1": "Horarios flexibles — elegí el momento que mejor te funcione",
+      "item_2": "Sin traslados — aprendé desde la comodidad de tu casa",
+      "item_3": "Material digital incluido — guías y ejercicios personalizados",
+      "item_4": "En tu idioma — clases en español, inglés o ucraniano",
+      "item_5": "Seguimiento continuo — feedback detallado en cada clase"
+    },
+    "cta": "Reservá tu primera clase",
+    "cta_desc": "La primera clase es de prueba y sin compromiso. Conocé la metodología y empezá a dibujar."
+  },
   "contacto": {
     "title": "Contacto",
     "subtitle": "Reservá tu primera clase o consultame lo que necesites.",

@@ -9,12 +9,12 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
 <!-- ════════════════════════════════════════════════════════ -->
 <!-- HERO SECTION                                           -->
 <!-- ════════════════════════════════════════════════════════ -->
-<section id="hero" class="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-brand-50 via-paper to-paper">
+<section id="hero" class="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-complementary-50 via-paper to-paper">
   <!-- Background decorative shapes (floating) -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <div data-float class="absolute top-20 left-[10%] w-48 h-48 rounded-full bg-brand-200/20 blur-3xl"></div>
-    <div data-float class="absolute top-40 right-[15%] w-64 h-64 rounded-full bg-brand-300/15 blur-3xl"></div>
-    <div data-float class="absolute bottom-20 left-[30%] w-36 h-36 rounded-full bg-brand-100/25 blur-3xl"></div>
+    <div data-float class="absolute top-20 left-[10%] w-48 h-48 rounded-full bg-complementary-200/20 blur-3xl"></div>
+    <div data-float class="absolute top-40 right-[15%] w-64 h-64 rounded-full bg-complementary-300/15 blur-3xl"></div>
+    <div data-float class="absolute bottom-20 left-[30%] w-36 h-36 rounded-full bg-accent-100/25 blur-3xl"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
@@ -45,7 +45,7 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
           </a>
           <a
             href={localePrefix === '' ? '/galeria' : `${localePrefix}/galeria`}
-            class="inline-flex items-center px-6 py-3 border-2 border-brand-200 text-ink font-medium rounded-lg hover:border-brand-400 hover:bg-brand-50 transition-all duration-300"
+            class="inline-flex items-center px-6 py-3 border-2 border-complementary-300 text-ink font-medium rounded-lg hover:border-complementary-500 hover:bg-complementary-50 transition-all duration-300"
           >
             {t('hero.cta_secondary')}
           </a>
@@ -54,9 +54,9 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
 
       <!-- Hero image / decorative artwork -->
       <div data-hero-image class="relative">
-        <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-brand-100 to-brand-200 shadow-2xl">
+        <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-complementary-100 to-complementary-200 shadow-2xl">
           <div class="absolute inset-0 flex items-center justify-center">
-            <svg viewBox="0 0 400 300" class="w-full h-full text-brand-300/60">
+            <svg viewBox="0 0 400 300" class="w-full h-full text-complementary-300/60">
               <!-- Abstract art placeholder — SVG ilustrativo -->
               <circle cx="120" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="2" />
               <circle cx="120" cy="100" r="40" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
@@ -75,8 +75,8 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
         </div>
 
         <!-- Decorative corner accent -->
-        <div class="absolute -bottom-4 -right-4 w-24 h-24 border-r-2 border-b-2 border-brand-400 rounded-br-xl -z-10"></div>
-        <div class="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-brand-400 rounded-tl-xl -z-10"></div>
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 border-r-2 border-b-2 border-accent-400 rounded-br-xl -z-10"></div>
+        <div class="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-accent-400 rounded-tl-xl -z-10"></div>
       </div>
     </div>
   </div>
@@ -104,8 +104,8 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
 
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Individual -->
-      <article class="group relative bg-paper rounded-2xl p-8 border border-brand-100/50 hover:border-brand-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mb-6 text-brand-700 text-xl">
+      <article class="group relative bg-paper rounded-2xl p-8 border border-complementary-100/50 hover:border-complementary-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+        <div class="w-12 h-12 rounded-xl bg-complementary-100 flex items-center justify-center mb-6 text-complementary-700 text-xl">
           ✏️
         </div>
         <h3 class="font-display text-xl font-semibold text-ink-dark mb-3">
@@ -117,8 +117,8 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
       </article>
 
       <!-- Mentoría -->
-      <article class="group relative bg-paper rounded-2xl p-8 border border-brand-100/50 hover:border-brand-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mb-6 text-brand-700 text-xl">
+      <article class="group relative bg-paper rounded-2xl p-8 border border-complementary-100/50 hover:border-complementary-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+        <div class="w-12 h-12 rounded-xl bg-complementary-100 flex items-center justify-center mb-6 text-complementary-700 text-xl">
           🎯
         </div>
         <h3 class="font-display text-xl font-semibold text-ink-dark mb-3">
@@ -130,8 +130,8 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
       </article>
 
       <!-- Idiomas -->
-      <article class="group relative bg-paper rounded-2xl p-8 border border-brand-100/50 hover:border-brand-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mb-6 text-brand-700 text-xl">
+      <article class="group relative bg-paper rounded-2xl p-8 border border-complementary-100/50 hover:border-complementary-300/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+        <div class="w-12 h-12 rounded-xl bg-complementary-100 flex items-center justify-center mb-6 text-complementary-700 text-xl">
           🌍
         </div>
         <h3 class="font-display text-xl font-semibold text-ink-dark mb-3">
@@ -165,12 +165,12 @@ const localePrefix = locale === 'es' ? '' : `/${locale}`;
         <div
           data-gallery-item
           class:list={[
-            'relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-brand-100 to-brand-200 border border-brand-200/50',
+            'relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-complementary-100 to-complementary-200 border border-complementary-200/50',
             i === 1 && 'md:row-span-2 md:col-span-2',
             i === 5 && 'md:col-span-2',
           ]}
         >
-          <div class="absolute inset-0 flex items-center justify-center text-brand-300/80">
+          <div class="absolute inset-0 flex items-center justify-center text-complementary-300/80">
             <svg viewBox="0 0 100 100" class="w-16 h-16 md:w-20 md:h-20">
               <circle cx="50" cy="45" r="15" fill="none" stroke="currentColor" stroke-width="1.5" />
               <path d="M20 75 L40 55 L55 70 L70 50 L85 75" fill="none" stroke="currentColor" stroke-width="1.5" />

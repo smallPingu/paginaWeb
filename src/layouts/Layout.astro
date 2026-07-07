@@ -29,7 +29,7 @@ const siteDesc = description ?? t('site.description');
   <body class="bg-paper text-ink font-body antialiased">
     <div class="min-h-screen flex flex-col">
       <!-- Header -->
-      <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-paper/80 border-b border-brand-100/50">
+      <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-paper/80 border-b border-complementary-200/50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <a href={locale === 'es' ? '/' : `/${locale}/`} class="text-xl font-display font-bold text-brand-700 hover:text-brand-600 transition-colors">
             ✦ {t('site.title')}
@@ -38,6 +38,9 @@ const siteDesc = description ?? t('site.description');
           <div class="hidden md:flex items-center gap-8">
             <a href={locale === 'es' ? '/' : `/${locale}/`} class="text-sm font-medium text-ink-light hover:text-ink transition-colors">
               {t('nav.inicio')}
+            </a>
+            <a href={locale === 'es' ? '/clases' : `/${locale}/clases`} class="text-sm font-medium text-ink-light hover:text-ink transition-colors">
+              {t('nav.clases')}
             </a>
             <a href={locale === 'es' ? '/galeria' : `/${locale}/galeria`} class="text-sm font-medium text-ink-light hover:text-ink transition-colors">
               {t('nav.galeria')}
@@ -50,7 +53,7 @@ const siteDesc = description ?? t('site.description');
             </a>
 
             <!-- Language Selector -->
-            <div class="flex items-center gap-1 border-l border-brand-100 pl-4">
+            <div class="flex items-center gap-1 border-l border-complementary-200 pl-4">
               <a href="/" class={`px-2 py-1 text-xs rounded transition-colors ${locale === 'es' ? 'bg-brand-600 text-white' : 'text-ink-light hover:text-ink'}`}>
                 ES
               </a>
@@ -74,12 +77,13 @@ const siteDesc = description ?? t('site.description');
         </nav>
 
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-paper border-t border-brand-100/50 px-4 py-4 space-y-3">
+        <div id="mobile-menu" class="md:hidden hidden bg-paper border-t border-complementary-200/50 px-4 py-4 space-y-3">
           <a href={locale === 'es' ? '/' : `/${locale}/`} class="block text-sm font-medium">{t('nav.inicio')}</a>
+          <a href={locale === 'es' ? '/clases' : `/${locale}/clases`} class="block text-sm font-medium">{t('nav.clases')}</a>
           <a href={locale === 'es' ? '/galeria' : `/${locale}/galeria`} class="block text-sm font-medium">{t('nav.galeria')}</a>
           <a href={locale === 'es' ? '/blog' : `/${locale}/blog`} class="block text-sm font-medium">{t('nav.blog')}</a>
           <a href={locale === 'es' ? '/contacto' : `/${locale}/contacto`} class="block text-sm font-medium">{t('nav.contacto')}</a>
-          <div class="flex gap-2 pt-2 border-t border-brand-100/50">
+          <div class="flex gap-2 pt-2 border-t border-complementary-200/50">
             <a href="/" class="px-2 py-1 text-xs rounded bg-brand-600 text-white">ES</a>
             <a href="/en/" class="px-2 py-1 text-xs rounded text-ink-light">EN</a>
             <a href="/uk/" class="px-2 py-1 text-xs rounded text-ink-light">UK</a>

@@ -13,6 +13,10 @@ const entry = Object.entries(rawModules).find(([filepath, mod]: [string, any]) =
 });
 
 const post = entry ? { Content: entry[1].Content, frontmatter: entry[1].frontmatter } : null;
+
+if (!post) {
+  Astro.status = 404;
+}
 ---
 
 <section class="py-24 px-4 min-h-screen">

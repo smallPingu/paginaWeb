@@ -1,20 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import BlogPostContent from '../../../components/BlogPostContent.astro';
-
-export async function getStaticPaths() {
-  const rawModules = import.meta.glob('../../../content/blog/*.md', { eager: true });
-  const entries = Object.entries(rawModules).map(([filepath, mod]: [string, any]) => ({
-    slug: filepath.split('/').pop()?.replace(/\.md$/, ''),
-    ...mod.frontmatter,
-  }));
-
-  return entries
-    .filter((p) => p.locale === 'en' && !p.draft)
-    .map((p) => ({
-      params: { slug: p.slug },
-    }));
-}
 ---
 
 <Layout>
